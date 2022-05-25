@@ -1,0 +1,88 @@
+Introdução ao Git e ao GitHub
+
+Os comandos básicos para a interação no sistema Windonws são: cd, dir, mkdir, del/rmdir
+Os comandos básicos para a interação no sistema Linux são: cd, ls, mkdir e rm
+
+Todos esses comandos podem apresentar variâncias (flags).
+
+Para mudança de pastas: se usa o comando "CD" tanto no Windows quanto no Linux;
+
+Para a listagem de pastas: no Windows (DIR) e no Linux (LS)
+A flag "-a" possibilita a listagem de arquivos ocultos.
+
+O comando "CD /" (chance direction) possibilita a navegação entre as pastas e é igual em todos os sistemas. Agora para inverter o caminho é possível usar o comando "CD .."
+
+Para a criação de pastas: é usado o comando "MKDIR" em ambos sistemas. Mas no Linux é necessário pedir permissão com o comando "sudo su" e depois coloca o comando para a criação de pasta.
+
+Para a criação de arquivos dentro de uma pasta: no Windows se usa o comando "echo" (ele printa de volta ao terminal uma frase/texto que vai passar depois do comando)
+
+">" é um redirecionador de fluxo, ele pega a saída de uma função (nesse caso o echo) e joga em um arquivo.
+Exemplo:
+	workspace>echo hello
+	hello
+	workspace>echo hello>hello.txt
+
+Para deletar pastas/arquivos: no Windows se usa os comandos "DEL/RMKDIR", podendo usar as flags /S e /Q, e no Linux o comando é "RM" podendo usar as flags -RF, sendo que a flag R deleta todas as pastas contidas dentro de outras pastas no repositório e a flag F rejeita a apresentação da confirmação da exclusão da pasta.
+O comando DEL (delete) no Windows so deleta arquivos e não repositórios.
+
+Para a navegação no histórico de comando pode ser usado o comando "DIR" + seta pra cima
+
+O comando para limpar a tela no Windows é "cls" e no Linux se usa o "clear" ou "CTRL+L" 
+
+Teclados úteis:
+TAB tem a função de autocompletar 
+
+---------------------------------------------------------------------------------------
+
+O Git possui duas formas de auteticação segura, a chave SSH e o Token. 
+
+Git init: inicia um repositório no git
+
+Definições Tracked e Untracked: a definição de untracked está relacionada a ausência desse arquivo no repositório e o tracked é rastreável.
+O tracked é subdividido em unmodified, modified e straged. Unmodified é um arquivo que não foi modificado diferente do modified e, por fim, o staged é o local onde está os arquivos
+que estão se "preparando" para fazer parte de um agrupamento, ele se "prepara" para fazer parte de um commit. Quando há a geração do commit ("envelopa" todos os arquivos, descreve uma mensagem e dá um significado ao pacote) 
+o staged passa para unmodified.
+
+Se usa "Git add" para mudar o status de Untracked para Staged
+
+Para mudar de Staged para Unmodified é necessário dar um commit, o commit retorna esses arquivos para unmodified, salva eles, tira um "print" do código e se caso o arquivo for editado ele vai para modified.
+Os três estágios do tracked é um ciclo, sempre volta para unmodified se "commita", se abrir e fazer alterações ele move para modified e se adiciona a um commit ele move para unmodified.
+
+O git é um sistema distribuído ele vai ter versão github (repositório) e na máquina, as alterações que são feitas não repercute imediatamente no repositório que esta no servidor
+
+Se tem o ambiente de desenvolvimento (working directory, staging area e local repository) e servidor (remote repository), os arquivos vão oscilar sempre entre repositorio de trabalho e staging area sempre que há modificação,
+quando se faz um commit o arquivo passa a integrar o repositorio local que é empurrado para um repositorio remoto. 
+
+	
+	{Working directory & Staging area = untracked -> staged / modified -> staged}
+
+Quando se faz o commit há um movimento dos arquivos que estavam no staged para unmodified e assim popula o repositorio local (que é composto de commit, se "comitar" não tem como ocupar esse local e por sua vez não tem como enviar para o repositório remoto -github-)
+O git status vai ajudar a monitorar o status dos arquivos
+
+- Git add: remover arquivos, adiciona todas modificações do repositorio local para a staging area, esta colocando os arquivos na area que vai entrar em ação (staged)
+Git add nomeArquivo
+Git add * modifica o status
+Git add . ou git add -a adiciona todas as pastas que estão no arquivo
+
+
+- Git commit: cria um commit , logo ele pegou os arquivos que estavam em stage e se colocou um mensagem dando um sentido 
+Git commit -m "msg..."
+
+O comado git config -- global -- unset (+ propriedade especifica amodificar)
+Ex: git config -- usent user.email 
+Pra registrar é só retirar o unset
+	
+O comando git push pega o código da máquina e envia pro github
+Comando:
+Git push origin master
+	
+O comado "git pull" puxa o que está no repositorio para a maquina, normalmente é usado para juntar as versões da maquina e do repositorio.
+Comando: 
+Git pull origin master
+	
+O comando pra usar um repositorio na maquina é:
+Git clone https-do repositorio
+
+Para entrar na pasta de um arquivo é:
+Cd nomedapasta/
+
